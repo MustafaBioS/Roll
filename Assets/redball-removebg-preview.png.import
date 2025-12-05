@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo4iyla4fp07n"
-path="res://.godot/imported/ball.png-1953c7d658a9d52aab6b71a2f962f6ac.ctex"
+uid="uid://blk2ot6jalfhl"
+path="res://.godot/imported/redball-removebg-preview.png-1e7a9f5ffd44a69d306ea5ff071e45e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ball.png"
-dest_files=["res://.godot/imported/ball.png-1953c7d658a9d52aab6b71a2f962f6ac.ctex"]
+source_file="res://Assets/redball-removebg-preview.png"
+dest_files=["res://.godot/imported/redball-removebg-preview.png-1e7a9f5ffd44a69d306ea5ff071e45e5.ctex"]
 
 [params]
 

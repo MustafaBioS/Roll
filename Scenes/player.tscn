@@ -1,17 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn747i4u0em4v"]
 
 [ext_resource type="Script" uid="uid://ch4qren4eyei1" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://bo4iyla4fp07n" path="res://Assets/ball.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://blk2ot6jalfhl" path="res://Assets/redball-removebg-preview.png" id="2_cvnsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 18.0
+radius = 80.1561
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_cvnsp")
 
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(0, -29)
+zoom = Vector2(2.5, 2.5)
+limit_left = -240
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.505, -3.5)
 shape = SubResource("CircleShape2D_cvnsp")
