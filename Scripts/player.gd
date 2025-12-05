@@ -1,10 +1,16 @@
 extends CharacterBody2D
+@onready var camera = $Camera2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 250.0
+const JUMP_VELOCITY = -300.0
+
+func player():
+	pass
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_axis("ui_left", "ui_right")
+	print(global_position)
+	
+	var direction := Input.get_axis("a", "d")
 
 	if direction != 0:
 		velocity.x = direction * SPEED
@@ -18,5 +24,5 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	rotation += velocity.x * delta / 20.0
-
+	
 	move_and_slide()
