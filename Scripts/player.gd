@@ -11,6 +11,7 @@ var hooked = false
 var rope_length = 300
 var current_rope_length
 @onready var raycasts = $Raycasts
+@onready var rope = $Line2D
 
 func _ready() -> void:
 	current_rope_length = rope_length
@@ -44,25 +45,22 @@ func _physics_process(delta: float) -> void:
 		swing(delta)
 		motion *= 0.975
 		velocity = motion
-	
+		
+	_draw()
 	move_and_slide()
 
 func _draw():
-	var pos = global_position
-	
-	if hooked and hook_pos != null:
-		var local_hook = hook_pos - global_position
-		draw_line(Vector2.ZERO, local_hook, Color(1, 1, 1), 2.0, true)
-	else:
-		for ray in raycasts.get_children():
-			if ray.is_colliding():
-				var collide_point = ray.get_collision_point()
-				if pos.distance_to(collide_point) < rope_length:
-					draw_line(Vector2.ZERO, to_local(collide_point), Color(1,1,1), 0.5, true)
-				break
+	rope.clear_points()
+	if not hooked or hook_pos == null:
+		return
+	rope.add_point(to_local(global_position))
+	rope.add_point(to_local(hook_pos))
 
 func hook():
-	raycasts.look_at(get_global_mouse_position())
+	for ray in raycasts.get_children():
+		if ray.has_method("look_at"):
+			ray.look_at(get_global_mouse_position())
+
 	if Input.is_action_just_pressed("lmb"):
 		hook_pos = get_hook_pos()
 		if hook_pos != null:
