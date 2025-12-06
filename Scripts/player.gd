@@ -60,7 +60,7 @@ func get_hook_collider():
 	for ray in raycasts.get_children():
 		if ray.is_colliding():
 			var c = ray.get_collider()
-			if c == self:
+			if c == self or c.name == "Barriers":
 				continue
 			return c
 	return null
@@ -85,7 +85,7 @@ func get_hook_pos():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
-			if collider == self:
+			if collider == self or collider.name == "Barriers":
 				continue
 			var p = raycast.get_collision_point()
 			if typeof(p) == TYPE_VECTOR2:
