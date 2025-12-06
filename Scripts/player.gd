@@ -56,6 +56,15 @@ func _draw():
 	rope.add_point(to_local(global_position))
 	rope.add_point(to_local(hook_pos))
 
+func get_hook_collider():
+	for ray in raycasts.get_children():
+		if ray.is_colliding():
+			var c = ray.get_collider()
+			if c == self:
+				continue
+			return c
+	return null
+
 func hook():
 	for ray in raycasts.get_children():
 		if ray.has_method("look_at"):
@@ -64,15 +73,20 @@ func hook():
 	if Input.is_action_just_pressed("lmb"):
 		hook_pos = get_hook_pos()
 		if hook_pos != null:
+			var collider = get_hook_collider()
 			hooked = true
 			current_rope_length = global_position.distance_to(hook_pos)
 			motion = velocity
+			print("Hooked onto: ", collider, " (name: ", collider.name, ")")
 	if Input.is_action_just_released("lmb") and hooked:
 		hooked = false
 			
 func get_hook_pos():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider == self:
+				continue
 			var p = raycast.get_collision_point()
 			if typeof(p) == TYPE_VECTOR2:
 				return p
