@@ -31,6 +31,9 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("pause"):
 			print("click true")
 			State.paused = false
+	
+	if State.win == true:
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 func _physics_process(delta: float) -> void:
 	

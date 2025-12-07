@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cevljfrniqnxq"]
+[gd_scene load_steps=27 format=3 uid="uid://cevljfrniqnxq"]
 
 [ext_resource type="Texture2D" uid="uid://by7sfiyrfvl8o" path="res://Assets/Dungeon Tile Set.png" id="1_gw65t"]
 [ext_resource type="PackedScene" uid="uid://dn747i4u0em4v" path="res://Scenes/player.tscn" id="2_os8ru"]
@@ -233,6 +233,14 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oidrm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os8ru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bcgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4g8w4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j56ed"]
 
 [node name="Level 1" type="Node2D"]
 
@@ -522,6 +530,65 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_oidrm")
 text = "Exit
 "
 
+[node name="Options" type="ColorRect" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.75
+offset_top = -146.0
+offset_right = 238.75
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="Pause/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.5
+offset_top = 21.0
+offset_right = 55.5
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_j56ed")
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Back" type="Button" parent="Pause/Options"]
+layout_mode = 0
+offset_left = 38.75
+offset_top = 16.0
+offset_right = 116.75
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("5_j56ed")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_os8ru")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4bcgh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4g8w4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j56ed")
+text = "<-"
+
+[node name="WIP" type="Label" parent="Pause/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -15.5
+offset_right = 133.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_j56ed")
+theme_override_font_sizes/font_size = 30
+text = "Work In Progress..."
+
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="DeathZone2" to="DeathZone" method="_on_death_zone_2_body_entered"]
 [connection signal="body_entered" from="Trigger" to="Trigger" method="_on_body_entered"]
@@ -540,3 +607,4 @@ text = "Exit
 [connection signal="pressed" from="Pause/Buttons/Options" to="Pause" method="_on_options_pressed"]
 [connection signal="pressed" from="Pause/Buttons/Menu" to="Pause" method="_on_menu_pressed"]
 [connection signal="pressed" from="Pause/Buttons/Exit" to="Pause" method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause/Options/Back" to="Pause" method="_on_back_pressed"]
