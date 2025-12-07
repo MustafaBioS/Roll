@@ -20,6 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if x == true:
 		if Input.is_action_just_pressed("interact"):
+			State.lvl2 = true
 			get_tree().change_scene_to_file("res://Scenes/lvl2.tscn")
 
 func _on_body_entered(body: Node2D) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b882e16qr1cyx"]
+[gd_scene load_steps=25 format=3 uid="uid://b882e16qr1cyx"]
 
 [ext_resource type="Texture2D" uid="uid://d17hy0l75siln" path="res://Assets/Final/Final/Background_0.png" id="1_kfoov"]
 [ext_resource type="Texture2D" uid="uid://by7sfiyrfvl8o" path="res://Assets/Dungeon Tile Set.png" id="1_yo6rb"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://4ochtjcrp3vx" path="res://Assets/Final/Final/Background_1.png" id="7_0s2g3"]
 [ext_resource type="Texture2D" uid="uid://cwy2m2whc4wde" path="res://Assets/Final/Final/Grass_background_1.png" id="8_vplc7"]
 [ext_resource type="Texture2D" uid="uid://bmqx5fmqje4qj" path="res://Assets/Final/Final/Grass_background_2.png" id="9_p5c1a"]
+[ext_resource type="FontFile" uid="uid://eswe8xr4ogbl" path="res://Assets/Fonts/Minecraft.ttf" id="10_p5c1a"]
+[ext_resource type="Script" uid="uid://cvkxvax3sot5s" path="res://Scripts/trigger_2.gd" id="10_vruis"]
+[ext_resource type="Script" uid="uid://qp0cjf4eii2f" path="res://Scripts/pause.gd" id="12_xrxow"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfoov"]
 texture = ExtResource("1_yo6rb")
@@ -263,9 +266,13 @@ texture = ExtResource("2_8hx2h")
 8:5/0 = 0
 9:5/0 = 0
 10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.35971832, 8, 0.71943474, 8, 8, -8, 8)
 11:5/0 = 0
+11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.71943474, 8, 0.5395775, 8, 8, -8, 8)
 12:5/0 = 0
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.71943474, 8, 0.5395775, 8, 8, -8, 8)
 13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.17985916, 8, 0.35971832, 8, 8, -8, 8)
 14:5/0 = 0
 15:5/0 = 0
 16:5/0 = 0
@@ -283,9 +290,13 @@ texture = ExtResource("2_8hx2h")
 8:6/0 = 0
 9:6/0 = 0
 10:6/0 = 0
+10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:6/0 = 0
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:6/0 = 0
+13:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:6/0 = 0
 15:6/0 = 0
 16:6/0 = 0
@@ -303,9 +314,13 @@ texture = ExtResource("2_8hx2h")
 8:7/0 = 0
 9:7/0 = 0
 10:7/0 = 0
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:7/0 = 0
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:7/0 = 0
+13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:7/0 = 0
 15:7/0 = 0
 16:7/0 = 0
@@ -593,7 +608,7 @@ texture = ExtResource("2_8hx2h")
 10:19/0 = 0
 11:19/0 = 0
 12:19/0 = 0
-12:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.7770329, -8, 8, -8, 8, 8, -2.87774, 8, -2.87774, 2.6978817, 4.3166084, -3.4173155)
+12:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.4964676, -8, 2.5180225, -5.2159023, -0.71943474, -3.2374563, -1.7985878, -0.35971642, 0, 3.4173164, 1.2590103, 8, -8, 8)
 13:19/0 = 0
 13:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:19/0 = 0
@@ -824,6 +839,32 @@ size = Vector2(49, 1401)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_286jt"]
 size = Vector2(49, 1900)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vplc7"]
+size = Vector2(369, 167)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vruis"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrxow"]
+bg_color = Color(0.69965345, 0.69965345, 0.69965345, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2xpx"]
+bg_color = Color(0.7792914, 0.7792914, 0.7792913, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bty1o"]
+
 [node name="Level 2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -837,7 +878,7 @@ layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array(1507329, 786433, 18, 1507330, 851969, 18, 1376259, 917505, 16, 1441795, 917505, 17, 1507331, 917505, 18, 1376260, 983041, 16, 1441796, 983041, 17, 1507332, 983041, 18, 1376261, 1048577, 16, 1441797, 1048577, 17, 1507333, 1048577, 18, 1376262, 1114113, 16, 1441798, 1114113, 17, 1507334, 1114113, 18, 1376263, 1179649, 16, 1441799, 1179649, 17, 1507335, 1179649, 18, 1376264, 1245185, 16, 1441800, 1245185, 17, 1507336, 1245185, 18, 1507337, 1310721, 18, 1507338, 1376257, 18, 1376257, 786433, 16, 1441793, 786433, 17, 1376258, 851969, 16, 1441794, 851969, 17, 1245187, 917505, 14, 1310723, 917505, 15, 1245188, 983041, 14, 1310724, 983041, 15, 1245189, 1048577, 14, 1310725, 1048577, 15, 1245190, 1114113, 14, 1310726, 1114113, 15, 1245191, 1179649, 14, 1310727, 1179649, 15, 1245192, 1245185, 14, 1310728, 1245185, 15, 1376265, 1310721, 16, 1441801, 1310721, 17, 1376266, 1376257, 16, 1441802, 1376257, 17, 1572865, 786433, 19, 1572866, 851969, 19, 1572867, 917505, 19, 1572868, 983041, 19, 1572869, 1048577, 19, 1572870, 1114113, 19, 1572871, 1179649, 19, 1572872, 1245185, 19, 1572873, 1310721, 19, 1572874, 1376257, 19, 1638401, 786433, 19, 1638402, 851969, 19, 1638403, 917505, 19, 1638404, 983041, 19, 1638405, 1048577, 19, 1638406, 1114113, 19, 1638407, 1179649, 19, 1638408, 1245185, 19, 1638409, 1310721, 19, 1638410, 1376257, 19)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(225, 367)
+position = Vector2(254, 359)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_yue0m")
 
@@ -1015,3 +1056,135 @@ visible = false
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Tree"]
 position = Vector2(384, 208)
 texture = ExtResource("9_p5c1a")
+
+[node name="Trigger7" type="Area2D" parent="."]
+script = ExtResource("10_vruis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger7"]
+position = Vector2(339.5, 326.5)
+shape = SubResource("RectangleShape2D_vplc7")
+
+[node name="Escaped" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 157.0
+offset_top = 271.99997
+offset_right = 863.0
+offset_bottom = 307.99997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.525, 0.525)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_p5c1a")
+theme_override_font_sizes/font_size = 36
+text = "Ah, So You Have Escaped The Dungeon..."
+
+[node name="Pause" type="CanvasLayer" parent="."]
+script = ExtResource("12_xrxow")
+
+[node name="Overlay" type="ColorRect" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5294118)
+
+[node name="Title" type="Label" parent="Pause"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 41.0
+offset_right = 105.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_p5c1a")
+theme_override_font_sizes/font_size = 60
+text = "Paused"
+
+[node name="Buttons" type="VBoxContainer" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -71.0
+offset_right = 76.5
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_vruis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xrxow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2xpx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bty1o")
+text = "Resume"
+
+[node name="Options" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_vruis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xrxow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2xpx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bty1o")
+text = "Options"
+
+[node name="Menu" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_vruis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xrxow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2xpx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bty1o")
+text = "Main Menu"
+
+[node name="Exit" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_vruis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xrxow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2xpx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bty1o")
+text = "Exit
+"
+
+[connection signal="body_entered" from="Trigger7" to="Trigger7" method="_on_body_entered"]
+[connection signal="body_exited" from="Trigger7" to="Trigger7" method="_on_body_exited"]
+[connection signal="pressed" from="Pause/Buttons/Resume" to="Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/Buttons/Options" to="Pause" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/Buttons/Menu" to="Pause" method="_on_menu_pressed"]
+[connection signal="pressed" from="Pause/Buttons/Exit" to="Pause" method="_on_exit_pressed"]
