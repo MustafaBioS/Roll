@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Roll"
-run/main_scene="uid://cj2scnn4v5j05"
+run/main_scene="uid://b882e16qr1cyx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=768
+window/size/viewport_height=416
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
