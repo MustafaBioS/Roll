@@ -23,6 +23,8 @@ func player():
 
 func _physics_process(delta: float) -> void:
 	
+	print(global_position)
+	
 	var direction := Input.get_axis("a", "d")
 
 	if direction != 0:
