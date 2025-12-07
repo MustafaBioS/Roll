@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://cevljfrniqnxq"]
+[gd_scene load_steps=23 format=3 uid="uid://cevljfrniqnxq"]
 
 [ext_resource type="Texture2D" uid="uid://by7sfiyrfvl8o" path="res://Assets/Dungeon Tile Set.png" id="1_gw65t"]
 [ext_resource type="PackedScene" uid="uid://dn747i4u0em4v" path="res://Scenes/player.tscn" id="2_os8ru"]
 [ext_resource type="Script" uid="uid://c1vbwkd75cyxv" path="res://Scripts/death_zone.gd" id="3_4bcgh"]
 [ext_resource type="Script" uid="uid://da315nuiqnxll" path="res://Scripts/trigger.gd" id="4_4g8w4"]
 [ext_resource type="FontFile" uid="uid://eswe8xr4ogbl" path="res://Assets/Fonts/Minecraft.ttf" id="5_j56ed"]
+[ext_resource type="Script" uid="uid://qp0cjf4eii2f" path="res://Scripts/pause.gd" id="6_os8ru"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gw65t"]
 texture = ExtResource("1_gw65t")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -178,7 +179,7 @@ texture = ExtResource("1_gw65t")
 
 [sub_resource type="TileSet" id="TileSet_5a7ea"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_go701")
+sources/0 = SubResource("TileSetAtlasSource_gw65t")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a7ea"]
 size = Vector2(3843, 43)
@@ -209,6 +210,29 @@ size = Vector2(169, 92.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikia7"]
 size = Vector2(44, 42.25)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bcgh"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g8w4"]
+bg_color = Color(0.69965345, 0.69965345, 0.69965345, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j56ed"]
+bg_color = Color(0.7792914, 0.7792914, 0.7792913, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oidrm"]
 
 [node name="Level 1" type="Node2D"]
 
@@ -398,6 +422,106 @@ theme_override_fonts/font = ExtResource("5_j56ed")
 theme_override_font_sizes/font_size = 24
 text = "E - Enter Door"
 
+[node name="Pause" type="CanvasLayer" parent="."]
+script = ExtResource("6_os8ru")
+
+[node name="Overlay" type="ColorRect" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5294118)
+
+[node name="Title" type="Label" parent="Pause"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 41.0
+offset_right = 105.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_j56ed")
+theme_override_font_sizes/font_size = 60
+text = "Paused"
+
+[node name="Buttons" type="VBoxContainer" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -71.0
+offset_right = 76.5
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_4bcgh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4g8w4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j56ed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oidrm")
+text = "Resume"
+
+[node name="Options" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_4bcgh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4g8w4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j56ed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oidrm")
+text = "Options"
+
+[node name="Menu" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_4bcgh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4g8w4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j56ed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oidrm")
+text = "Main Menu"
+
+[node name="Exit" type="Button" parent="Pause/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_4bcgh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4g8w4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j56ed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oidrm")
+text = "Exit
+"
+
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="DeathZone2" to="DeathZone" method="_on_death_zone_2_body_entered"]
 [connection signal="body_entered" from="Trigger" to="Trigger" method="_on_body_entered"]
@@ -412,3 +536,7 @@ text = "E - Enter Door"
 [connection signal="body_exited" from="Trigger5" to="Trigger" method="_on_trigger_5_body_exited"]
 [connection signal="body_entered" from="Trigger6" to="Trigger" method="_on_trigger_6_body_entered"]
 [connection signal="body_exited" from="Trigger6" to="Trigger" method="_on_trigger_6_body_exited"]
+[connection signal="pressed" from="Pause/Buttons/Resume" to="Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/Buttons/Options" to="Pause" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/Buttons/Menu" to="Pause" method="_on_menu_pressed"]
+[connection signal="pressed" from="Pause/Buttons/Exit" to="Pause" method="_on_exit_pressed"]

@@ -21,21 +21,30 @@ func _ready() -> void:
 func player():
 	pass
 
+func _process(delta: float) -> void:
+	if State.paused == false:
+		if Input.is_action_just_pressed("pause"):
+			print("click false")
+			State.paused = true
+
+	elif State.paused == true:
+		if Input.is_action_just_pressed("pause"):
+			print("click true")
+			State.paused = false
+
 func _physics_process(delta: float) -> void:
-	
-	print(global_position)
 	
 	var direction := Input.get_axis("a", "d")
 
-	if direction != 0:
+	if direction != 0 and State.paused == false:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if not is_on_floor():
+	if not is_on_floor() and State.paused == false:
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("space") and is_on_floor() and State.paused == false:
 		velocity.y = JUMP_VELOCITY
 
 	rotation += velocity.x * delta / 20.0
@@ -49,8 +58,10 @@ func _physics_process(delta: float) -> void:
 		velocity = motion
 		
 	_draw()
-	move_and_slide()
-
+	
+	if State.paused == false:
+		move_and_slide()
+	
 func _draw():
 	rope.clear_points()
 	if not hooked or hook_pos == null:
@@ -72,7 +83,7 @@ func hook():
 		if ray.has_method("look_at"):
 			ray.look_at(get_global_mouse_position())
 
-	if Input.is_action_just_pressed("lmb"):
+	if Input.is_action_just_pressed("lmb") and State.paused == false:
 		hook_pos = get_hook_pos()
 		if hook_pos != null:
 			var collider = get_hook_collider()
