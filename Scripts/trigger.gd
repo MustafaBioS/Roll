@@ -8,7 +8,6 @@ extends Area2D
 
 var x = false
 
-
 func _ready() -> void:
 	lmb.visible = false
 	trust.visible = false

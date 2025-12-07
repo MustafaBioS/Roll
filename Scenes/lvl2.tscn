@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b882e16qr1cyx"]
+[gd_scene load_steps=29 format=3 uid="uid://b882e16qr1cyx"]
 
 [ext_resource type="Texture2D" uid="uid://d17hy0l75siln" path="res://Assets/Final/Final/Background_0.png" id="1_kfoov"]
 [ext_resource type="Texture2D" uid="uid://by7sfiyrfvl8o" path="res://Assets/Dungeon Tile Set.png" id="1_yo6rb"]
@@ -865,6 +865,14 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bty1o"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrxow"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2xpx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1bpp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1lj6"]
+
 [node name="Level 2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1025,6 +1033,10 @@ position = Vector2(951, -28)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_286jt")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Barriers"]
+position = Vector2(1560, 37.5)
+shape = SubResource("RectangleShape2D_yue0m")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -1181,6 +1193,65 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_k2xpx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bty1o")
 text = "Exit
 "
+
+[node name="Options" type="ColorRect" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.75
+offset_top = -146.0
+offset_right = 238.75
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="Pause/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.5
+offset_top = 21.0
+offset_right = 55.5
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_p5c1a")
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Back" type="Button" parent="Pause/Options"]
+layout_mode = 0
+offset_left = 38.75
+offset_top = 16.0
+offset_right = 116.75
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("10_p5c1a")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xrxow")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k2xpx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s1bpp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h1lj6")
+text = "<-"
+
+[node name="WIP" type="Label" parent="Pause/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -15.5
+offset_right = 133.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_p5c1a")
+theme_override_font_sizes/font_size = 30
+text = "Work In Progress..."
 
 [connection signal="body_entered" from="Trigger7" to="Trigger7" method="_on_body_entered"]
 [connection signal="body_exited" from="Trigger7" to="Trigger7" method="_on_body_exited"]
